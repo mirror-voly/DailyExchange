@@ -36,10 +36,10 @@ class MainTableViewController: UITableViewController {
         let previous = Int(coursTest[indexPath.row].previous!)
         if value > previous {
             cell.LableRightDown.text = "▲"
-            cell.LableRightDown.textColor = .green
+            cell.LableRightDown.textColor = .red
         } else {
             cell.LableRightDown.text = "▼"
-            cell.LableRightDown.textColor = .red
+            cell.LableRightDown.textColor = .green
         }
 
         return cell
