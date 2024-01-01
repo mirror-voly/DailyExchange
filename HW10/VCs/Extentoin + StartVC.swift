@@ -11,13 +11,15 @@ extension StartViewController {
     
     func fetchdata() {
         guard let url = URL(string: dataSourseURL) else { return }
-        let dataTask = URLSession.shared.dataTask(with: url) { [self](data, _, _) in
-            guard let data = data else { return }
+        let dataTask = URLSession.shared.dataTask(with: url) { [self](data, responce, _) in
+            guard let data = data else {
+                print(responce ?? "Empty Responce")
+                return
+            }
             do {
                 let checkCorency = try JSONDecoder().decode(Corrency.self, from: data)
-                self.coursCharCodes.append(contentsOf: checkCorency.valute!.keys)
-                self.coursTest.append(contentsOf: checkCorency.valute!.values)
-                Corrency.counter = self.coursCharCodes.count
+                self.preparedDataOfValutes.append(contentsOf: checkCorency.valute!.values)
+                Corrency.counter = checkCorency.valute!.values.count
             } catch let error {
                 print(error)
             }

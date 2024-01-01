@@ -9,12 +9,7 @@ import UIKit
 
 class StartViewController: UIViewController {
     let dataSourseURL = "https://www.cbr-xml-daily.ru/daily_json.js"
-    
-    var coursCharCodes: [String] = []
-    var coursTest: [Valute] = []
-    var coursNames: [String] = []
-    var coursValues: [String] = []
-    var coursPreviosValues: [String] = []
+    var preparedDataOfValutes: [Valute] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +19,6 @@ class StartViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "goTwo" else { return }
         let destination = segue.destination as! MainTableViewController
-        destination.coursCharCodes = coursCharCodes
-        destination.coursTest = coursTest
+        destination.coursValutesData = preparedDataOfValutes
     }
 }
