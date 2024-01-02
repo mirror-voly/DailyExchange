@@ -8,8 +8,6 @@
 import UIKit
 
 class MainTableViewController: UITableViewController {
-    
-    var coursValutesData: [Valute] = []
 
     
     @IBOutlet var tableViewSettings: UITableView!
@@ -21,18 +19,18 @@ class MainTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Corrency.counter
+        return Corrency.valutes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UserTableViewCell
         
-        cell.LableLeft.text = coursValutesData[indexPath.row].charCode
-        cell.LableSenter.text = coursValutesData[indexPath.row].name
+        cell.LableLeft.text = Corrency.valutes[indexPath.row].charCode
+        cell.LableSenter.text = Corrency.valutes[indexPath.row].name
         
-        let value = Int(coursValutesData[indexPath.row].value!)
+        let value = Int(Corrency.valutes[indexPath.row].value!)
         cell.LableRight.text = (String(value)) + "₽"
-        let previous = Int(coursValutesData[indexPath.row].previous!)
+        let previous = Int(Corrency.valutes[indexPath.row].previous!)
         if value > previous {
             cell.LableRightDown.text = "▲"
             cell.LableRightDown.textColor = .red

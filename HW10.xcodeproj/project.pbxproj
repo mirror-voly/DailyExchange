@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		495DE0E22B4312FB00094A01 /* SaveToCash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495DE0E12B4312FB00094A01 /* SaveToCash.swift */; };
 		495F11472B3AEF2000EA2802 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495F11462B3AEF2000EA2802 /* StartViewController.swift */; };
 		495F114B2B3B123800EA2802 /* Extentoin + StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495F114A2B3B123800EA2802 /* Extentoin + StartVC.swift */; };
 		49617E4F2B39D766001A0E2C /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49617E4E2B39D766001A0E2C /* MainTableViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		495DE0E12B4312FB00094A01 /* SaveToCash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveToCash.swift; sourceTree = "<group>"; };
 		495F11462B3AEF2000EA2802 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		495F114A2B3B123800EA2802 /* Extentoin + StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extentoin + StartVC.swift"; sourceTree = "<group>"; };
 		49617E4E2B39D766001A0E2C /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +47,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		495DE0E32B43132200094A01 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				496430DB2B35708600E29782 /* JSON Data.swift */,
+				495DE0E12B4312FB00094A01 /* SaveToCash.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4964A0BB2B34519D008EE549 = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +77,7 @@
 			children = (
 				4964A0DB2B3451B4008EE549 /* App */,
 				4964A0DC2B3451C1008EE549 /* VCs */,
+				495DE0E32B43132200094A01 /* Model */,
 				4964A0DD2B3451D3008EE549 /* Storyboards */,
 				4964A0D02B34519F008EE549 /* Assets.xcassets */,
 				4964A0D52B34519F008EE549 /* Info.plist */,
@@ -89,7 +101,6 @@
 				495F114A2B3B123800EA2802 /* Extentoin + StartVC.swift */,
 				49617E4E2B39D766001A0E2C /* MainTableViewController.swift */,
 				4964A0E62B34673D008EE549 /* UserCollectionViewCell.swift */,
-				496430DB2B35708600E29782 /* JSON Data.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -178,6 +189,7 @@
 				495F11472B3AEF2000EA2802 /* StartViewController.swift in Sources */,
 				49617E4F2B39D766001A0E2C /* MainTableViewController.swift in Sources */,
 				495F114B2B3B123800EA2802 /* Extentoin + StartVC.swift in Sources */,
+				495DE0E22B4312FB00094A01 /* SaveToCash.swift in Sources */,
 				4964A0C82B34519D008EE549 /* AppDelegate.swift in Sources */,
 				4964A0CA2B34519D008EE549 /* SceneDelegate.swift in Sources */,
 				4964A0E72B34673D008EE549 /* UserCollectionViewCell.swift in Sources */,

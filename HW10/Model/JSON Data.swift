@@ -8,13 +8,14 @@
 import Foundation
 
 // MARK: - Welcome
-struct Corrency: Codable {
-    static var counter = 0
+struct Corrency: Encodable, Decodable {
+    static var valutes: [Valute] = []
+    
     let date, previousDate: String?
     let previousURL: String?
     let timestamp: String?
     let valute: [String: Valute]?
-
+    
     enum CodingKeys: String, CodingKey {
         case date = "Date"
         case previousDate = "PreviousDate"
@@ -22,11 +23,10 @@ struct Corrency: Codable {
         case timestamp = "Timestamp"
         case valute = "Valute"
     }
-    
 }
 
 // MARK: - Valute
-struct Valute: Codable {
+struct Valute: Encodable, Decodable {
     let id, numCode, charCode: String?
     let nominal: Int?
     let name: String?
@@ -41,4 +41,5 @@ struct Valute: Codable {
         case value = "Value"
         case previous = "Previous"
     }
+
 }
