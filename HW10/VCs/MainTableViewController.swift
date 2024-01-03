@@ -16,21 +16,32 @@ class MainTableViewController: UITableViewController {
         super.viewDidLoad()
         tableViewSettings.rowHeight = 80
         tableViewSettings.separatorColor = .black
+        Valute.valutes.sort {
+            $0.charCode! < $1.charCode!
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Corrency.valutes.count
+        return Valute.valutes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UserTableViewCell
         
-        cell.LableLeft.text = Corrency.valutes[indexPath.row].charCode
-        cell.LableSenter.text = Corrency.valutes[indexPath.row].name
+        cell.LableLeft.text = Valute.valutes[indexPath.row].charCode
+        cell.LableSenter.text = Valute.valutes[indexPath.row].name
         
-        let value = Int(Corrency.valutes[indexPath.row].value!)
+        let value = Int(Valute.valutes[indexPath.row].value!)
         cell.LableRight.text = (String(value)) + "₽"
-        let previous = Int(Corrency.valutes[indexPath.row].previous!)
+        
+        if Valute.valutes[indexPath.row].nominal! > 1 {
+            cell.LableRightValuteCouter.isHidden = false
+            cell.LableRightValuteCouter.text = "\(String(Valute.valutes[indexPath.row].nominal!)) \(Valute.valutes[indexPath.row].charCode ?? "")="
+        } else {
+            cell.LableRightValuteCouter.isHidden = true
+        }
+        
+        let previous = Int(Valute.valutes[indexPath.row].previous!)
         if value > previous {
             cell.LableRightDown.text = "▲"
             cell.LableRightDown.textColor = .red

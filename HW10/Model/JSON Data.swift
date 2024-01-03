@@ -9,7 +9,8 @@ import Foundation
 
 // MARK: - Welcome
 struct Corrency: Encodable, Decodable {
-    static var valutes: [Valute] = []
+    
+    static var date: String?
     
     let date, previousDate: String?
     let previousURL: String?
@@ -27,6 +28,9 @@ struct Corrency: Encodable, Decodable {
 
 // MARK: - Valute
 struct Valute: Encodable, Decodable {
+    static var valutes: [Valute] = []
+    
+    
     let id, numCode, charCode: String?
     let nominal: Int?
     let name: String?

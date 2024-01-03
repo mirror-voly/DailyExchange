@@ -15,10 +15,12 @@ extension StartViewController {
             guard let data = data else { return }
             do {
                 let corency = try JSONDecoder().decode(Corrency.self, from: data)
-                Corrency.valutes.removeAll()
-                Corrency.valutes.append(contentsOf: corency.valute!.values)
+                Valute.valutes.removeAll()
+                Valute.valutes.append(contentsOf: corency.valute!.values)
+                Corrency.date = "Актуальные данные от - \(corency.timestamp?.replacingOccurrences(of: "T", with: " ").replacingOccurrences(of: "+03:00", with: " по МСК") ?? "Error, can't find timestamp")"
                 DispatchQueue.main.async {
-                    self.dateLable.text = "Updated at \(corency.date ?? "")"
+                    self.dateLable.text = Corrency.date
+                    self.showAlert()
                 }
                 StorageManager.saveToCash()
             } catch let error {
@@ -29,9 +31,16 @@ extension StartViewController {
     }
     
     func isDataLoaded() {
-        if Corrency.valutes .isEmpty {
+        if Valute.valutes .isEmpty {
             fetchdata()
+        } else {
+            self.dateLable.text = Corrency.date
         }
+    }
+    func showAlert() {
+        let alert = UIAlertController(title: nil, message: "Обновлено", preferredStyle: .actionSheet)
+        self.present(alert, animated: false, completion: nil)
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in alert.dismiss(animated: false, completion: nil)} )
     }
 }
 

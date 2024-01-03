@@ -12,8 +12,10 @@ class StorageManager {
     private let shared = StorageManager()
     
     static func saveToCash() {
-        guard let dataEncoder = try? JSONEncoder().encode(Corrency.valutes) else { return }
+        guard let dataEncoder = try? JSONEncoder().encode(Valute.valutes) else { return }
         UserDefaults.standard.setValue(dataEncoder, forKey: "savedData")
+        let dateOfUpdate = Corrency.date
+        UserDefaults.standard.set(dateOfUpdate, forKey: "date")
         print(dataEncoder, "is saved")
     }
 
@@ -22,8 +24,10 @@ class StorageManager {
             return }
         guard let dataDecode = try? JSONDecoder().decode([Valute].self,
                                                          from: savedData) else { return }
+        guard let lastDate = UserDefaults.standard.string(forKey: "date") else { return }
         if !dataDecode.isEmpty {
-            Corrency.valutes = dataDecode
+            Corrency.date = lastDate
+            Valute.valutes = dataDecode
             print(savedData, "is loaded")
         }
             
