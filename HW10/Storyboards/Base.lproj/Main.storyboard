@@ -163,9 +163,9 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="exZ-Cu-d1Y">
-                                            <rect key="frame" x="130" y="49" width="170" height="20.333333333333329"/>
+                                            <rect key="frame" x="194.33333333333334" y="49" width="41.333333333333343" height="20.333333333333329"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="170" id="Um0-1t-39C"/>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="170" id="Um0-1t-39C"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
