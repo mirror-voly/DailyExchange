@@ -29,7 +29,7 @@ struct Corrency: Encodable, Decodable {
 // MARK: - Valute
 struct Valute: Encodable, Decodable {
     static var valutes: [Valute] = []
-    
+    static var lustChangedValute: Valute?
     
     let id, numCode, charCode: String?
     let nominal: Int?

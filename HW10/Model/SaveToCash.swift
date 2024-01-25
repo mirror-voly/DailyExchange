@@ -9,8 +9,6 @@ import Foundation
 
 class StorageManager {
     
-    private let shared = StorageManager()
-    
     static func saveToCash() {
         guard let dataEncoder = try? JSONEncoder().encode(Valute.valutes) else { return }
         UserDefaults.standard.setValue(dataEncoder, forKey: "savedData")
