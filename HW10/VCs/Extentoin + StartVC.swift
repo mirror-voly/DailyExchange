@@ -20,11 +20,12 @@ extension StartViewController {
                 Corrency.date = "Данные от - \(corency.timestamp?.replacingOccurrences(of: "T", with: " ").replacingOccurrences(of: "+03:00", with: " по МСК") ?? "Error, can't find timestamp")"
                 DispatchQueue.main.async {
                     self.dateLable.text = Corrency.date
-                    self.showAlert()
                 }
                 StorageManager.saveToCash()
+                self.showUpdateAlert()
             } catch let error {
                 print(error)
+                self.showErrorAlert()
             }
         }
         dataTask.resume()
@@ -35,13 +36,21 @@ extension StartViewController {
             fetchdata()
         } else {
             self.dateLable.text = Corrency.date
+            fetchdata()
         }
     }
-    func showAlert() {
+    func showUpdateAlert() {
         let alert = UIAlertController(title: nil, message: "Обновлено", preferredStyle: .actionSheet)
         self.present(alert, animated: false, completion: nil)
         Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in alert.dismiss(animated: false, completion: nil)} )
     }
+    
+    func showErrorAlert() {
+        let alert = UIAlertController(title: nil, message: "Ошибка сети", preferredStyle: .actionSheet)
+        self.present(alert, animated: false, completion: nil)
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in alert.dismiss(animated: false, completion: nil)} )
+    }
+    
     func setPopUpButtone() {
         let optionClosure = { (action : UIAction) in
             if action.title == "-" {

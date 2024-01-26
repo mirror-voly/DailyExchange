@@ -24,7 +24,6 @@ class StartViewController: UIViewController {
     }
     @IBAction func updateButtonePushed(_ sender: Any) {
         fetchdata()
-        showAlert()
     }
     
     @IBAction func textFieldHasChanged(_ sender: Any) {
@@ -35,7 +34,12 @@ class StartViewController: UIViewController {
         else {
             converValue(changedValute)
         }
-        
-
     }
+
+    @IBAction func showAllButtonePressed(_ sender: UIButton) {
+        if !Valute.valutes.isEmpty {
+            performSegue(withIdentifier: "goTwo", sender: self)
+        }
+    }
+    
 }
