@@ -11,8 +11,11 @@ extension StartViewController {
     
     func fetchdata() {
         guard let url = URL(string: dataSourseURL) else { return }
-        let dataTask = URLSession.shared.dataTask(with: url) { (data, _, _) in
-            guard let data = data else { return }
+        let dataTask = URLSession.shared.dataTask(with: url) { (data, responce, error) in
+            guard let data = data, error == nil else {
+                self.showErrorAlert()
+                return
+            }
             do {
                 let corency = try JSONDecoder().decode(Corrency.self, from: data)
                 Valute.valutes.removeAll()
@@ -32,7 +35,7 @@ extension StartViewController {
     }
     
     func isDataLoaded() {
-        if Valute.valutes .isEmpty {
+        if Valute.valutes.isEmpty {
             fetchdata()
         } else {
             self.dateLable.text = Corrency.date
@@ -40,15 +43,20 @@ extension StartViewController {
         }
     }
     func showUpdateAlert() {
-        let alert = UIAlertController(title: nil, message: "Обновлено", preferredStyle: .actionSheet)
-        self.present(alert, animated: false, completion: nil)
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in alert.dismiss(animated: false, completion: nil)} )
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: nil, message: "Обновлено", preferredStyle: .actionSheet)
+            self.present(alert, animated: false, completion: nil)
+            Timer.scheduledTimer(withTimeInterval: 0.4, repeats: false, block: { _ in alert.dismiss(animated: false, completion: nil)} )
+        }
     }
     
     func showErrorAlert() {
-        let alert = UIAlertController(title: nil, message: "Ошибка сети", preferredStyle: .actionSheet)
-        self.present(alert, animated: false, completion: nil)
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in alert.dismiss(animated: false, completion: nil)} )
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: nil, message: "Не удалось обновить данные", preferredStyle: .actionSheet)
+            self.present(alert, animated: false, completion: nil)
+            Timer.scheduledTimer(withTimeInterval: 0.4, repeats: false, block: { _ in alert.dismiss(animated: false, completion: nil)} )
+        }
+
     }
     
     func setPopUpButtone() {

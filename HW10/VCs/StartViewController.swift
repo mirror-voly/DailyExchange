@@ -17,10 +17,10 @@ class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         inputTextField.attributedPlaceholder = NSAttributedString(string: "₽", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        self.popUpButtone.setTitleColor(.gray, for: .normal)
         StorageManager.loadFromCash()
         isDataLoaded()
         setPopUpButtone()
-        self.popUpButtone.setTitleColor(.gray, for: .normal)
     }
     @IBAction func updateButtonePushed(_ sender: Any) {
         fetchdata()
@@ -39,6 +39,8 @@ class StartViewController: UIViewController {
     @IBAction func showAllButtonePressed(_ sender: UIButton) {
         if !Valute.valutes.isEmpty {
             performSegue(withIdentifier: "goTwo", sender: self)
+        } else {
+            self.showErrorAlert()
         }
     }
     
